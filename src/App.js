@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     const fetchDatasetInfo = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/health');
+        const response = await axios.get('https://backend-health-app.onrender.com/health');
         setDatasetInfo(response.data);
       } catch (error) {
         console.error("Failed to fetch dataset info", error);
@@ -34,7 +34,7 @@ function App() {
     setError('');
     
     try {
-      const response = await axios.post('http://localhost:8000/predict', { context });
+      const response = await axios.post('https://backend-health-app.onrender.com/predict', { context });
       setResponseType(response.data.response_type);
       setDistribution(response.data.distribution);
       setError('');
@@ -52,7 +52,7 @@ function App() {
     setError('');
     
     try {
-      const res = await axios.post('http://localhost:8000/generate', {
+      const res = await axios.post('https://backend-health-app.onrender.com/generate', {
         context,
         response_type: type
       });
